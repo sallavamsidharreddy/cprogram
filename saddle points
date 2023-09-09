@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+
+    printf("Enter the number of columns: ");
+    scanf("%d", &cols);
+
+    int matrix[rows][cols];
+
+    printf("Enter the matrix elements:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    for (int i = 0; i < rows; i++) {
+        int min_row_value = matrix[i][0];
+        int min_col_index = 0;
+
+        for (int j = 1; j < cols; j++) {
+            if (matrix[i][j] < min_row_value) {
+                min_row_value = matrix[i][j];
+                min_col_index = j;
+            }
+        }
+
+        int is_saddle_point = 1;
+        for (int k = 0; k < rows; k++) {
+            if (matrix[k][min_col_index] > min_row_value) {
+                is_saddle_point = 0;
+                break;
+            }
+        }
+
+        if (is_saddle_point) {
+            printf("Saddle Point: %d at position (%d, %d)\n", min_row_value, i + 1, min_col_index + 1);
+        }
+    }
+
+    return 0;
+}

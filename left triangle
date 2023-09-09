@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main()
+{
+  int row = 0,column = 0;
+  int numberOfRows = 0;
+  printf("Enter the number of rows: ");
+  scanf("%u",&numberOfRows);
+  for(row=1; row<=numberOfRows; ++row)
+  {
+    
+    for(column=row; column<numberOfRows; ++column)
+    {
+      printf(" ");
+    }
+    
+    for(column=1; column<=row; ++column)
+    {
+      printf("*");
+    
+    printf("\n");
+  }
+  return 0;
+}
